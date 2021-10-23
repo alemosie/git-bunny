@@ -29,6 +29,6 @@ if [ "$input" = "Y" ] ; then
   
   git add . && \
   git status && \
-  git commit -m "\"$message\""
+  git commit -m "\"$message\"" && \
   git push origin $branch
 fi
