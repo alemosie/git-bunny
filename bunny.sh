@@ -31,6 +31,15 @@ signs[2]=$(cat << EOF
 EOF
 )
 
+signs[3]=$(cat << EOF
+
+      |----------|
+      | GIT THIS |
+      | BREAD 🥖 |
+      |----------|
+EOF
+)
+
 size=${#signs[@]}
 index=$(($RANDOM % $size))
 
