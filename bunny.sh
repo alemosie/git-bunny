@@ -45,14 +45,40 @@ EOF
 branch=$(git rev-parse --abbrev-ref HEAD)
 message=$1
 
+# git yeet --help
+help=$(cat << EOF
+usage: git yeet [help] <commit message>
+
+  yeet    Add, commit, and push all changes
+          to the current branch in origin.
+
+Example:
+  git yeet "First commit"
+EOF
+)
+
+if [ "$message" = "help" ] ; then 
+  echo "$help"
+  exit
+fi
+
+# Don't run `git yeet` if there is no commit message
+if [ -z "$message" ] ; then
+  echo "Please provide a commit message."
+  exit
+fi
+
+
+# Confirm
 echo "You're good to commit all your changes and yeet them to origin/$branch?"
 read -n 1 -p "Y/n: " input
 
 if [ "$input" = "Y" ] ; then
   echo "$bunny"
   
+  # Run add, commit, push
   git add . && \
   git status && \
-  git commit -m "\"$message\"" && \
+  git commit -m "$message" && \
   git push origin $branch
 fi
