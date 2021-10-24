@@ -49,6 +49,17 @@ signs[4]=$(cat << EOF
 EOF
 )
 
+signs[5]=$(cat << EOF
+
+    |------------|
+    | BETTER GIT |
+    | NOW WHILE  |
+    | YOU ARE    |
+    | AHEAD      |
+    |------------|
+EOF
+)
+
 size=${#signs[@]}
 index=$(($RANDOM % $size))
 
